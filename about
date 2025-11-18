@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Savvy Media Africa - Where Creativity Lives, Results Matter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --deep-navy: #001d3d;
+  --navy: #002855;
+  --bright-cyan: #00D4FF;
+  --cyan: #00A8E8;
+  --bright-green: #00FF88;
+  --green: #00E676;
+  --orange: #FF6B35;
+  --yellow: #FFB800;
+  --white: #FFFFFF;
+}
+
+body {
+  font-family: 'Sora', sans-serif;
+  color: var(--white);
+  background: var(--deep-navy);
+  overflow-x: hidden;
+  line-height: 1.6;
+  font-weight: 400;
+  cursor: none;
+}
+
+/* Custom Cursor */
+.cursor {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bright-cyan);
+  pointer-events: none;
+  z-index: 99999;
+  opacity: .8;
+  transition: transform .1s ease;
+  mix-blend-mode: screen;
+  box-shadow: 0 0 12px var(--bright-cyan), 0 0 24px rgba(0,212,255,.5);
+}
+
+.cursor-follower {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid var(--bright-cyan);
+  pointer-events: none;
+  z-index: 99998;
+  opacity: .4;
+  transition: all .25s ease;
+  box-shadow: inset 0 0 8px rgba(0,212,255,.3);
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
+h1 { font-size: clamp(2.8rem, 8vw, 6rem); }
+h2 { font-size: clamp(2.2rem, 6vw, 4rem); }
+h3 { font-size: clamp(1.4rem, 3vw, 2rem); }
+
+/* NAV - FIXED */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 1.5rem 3rem;
+  z-index: 9000;
+  transition: all .35s ease;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  margin: 0;
+}
+
+nav.scrolled {
+  background: #ffffff;
+  box-shadow: 0 4px 30px rgba(0,0,0,.12);
+  padding: 1rem 3rem;
+}
+
+.nav-logo {
+  height: 50px;
+  width: auto;
+  display: block;
+  filter: brightness(1) invert(0);
+}
+
+nav.scrolled .nav-logo {
+  filter: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  position: relative;
+  transition: .25s;
+}
+
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--bright-cyan);
+  transition: width .25s;
+  border-radius: 2px;
+}
+
+.nav-links a:hover::before { width: 100%; }
+
+nav.scrolled .nav-links a { color: var(--navy); }
+nav.scrolled .nav-links a::before { background: var(--navy); }
+
+/* HERO - PROPER SPACING */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--deep-navy) 0%, var(--navy) 100%);
+  margin: 0;
+}
+
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: .12;
+  pointer-events: none;
+  animation: float 20s ease-in-out infinite;
+}
+
+.shape-1 {
+  width: 700px;
+  height: 700px;
+  background: linear-gradient(135deg, var(--bright-cyan), var(--cyan));
+  top: 10%;
+  left: 5%;
+}
+
+.shape-2 {
+  width: 600px;
+  height: 600px;
+  background: linear-gradient(135deg, var(--orange), var(--yellow));
+  bottom: 6%;
+  right: 5%;
+  animation-delay: -10s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(50px, -50px) scale(1.1); }
+  50% { transform: translate(80px, -80px) scale(1.2); }
+  75% { transform: translate(30px, -40px) scale(1.15); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.hero p {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: rgba(255, 255, 255, .9);
+  line-height: 1.8;
+}
+
+.text-cyan { color: var(--bright-cyan); }
+.text-green { color: var(--bright-green); }
+.text-orange { color: var(--orange); }
+
+/* SECTIONS */
+.section {
+  padding: 6rem 2rem;
+  position: relative;
+  margin: 0;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* OUR STORY */
+.story-section {
+  background: var(--navy);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.story-content h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.story-text {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, .9);
+  margin-bottom: 1.5rem;
+}
+
+.story-text strong {
+  color: var(--bright-cyan);
+  font-weight: 600;
+}
+
+.story-image {
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 212, 255, .25);
+}
+
+.story-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* WHAT WE DO */
+.whatwedo-section {
+  background: var(--deep-navy);
+  text-align: center;
+}
+
+.whatwedo-section h2 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.whatwedo-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, .85);
+  margin-bottom: 4rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, .04);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border-radius: 28px;
+  border: 1px solid rgba(0, 212, 255, .15);
+  transition: all .45s;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 29px;
+  background: radial-gradient(500px 200px at var(--x, 50%) var(--y, 50%), rgba(0, 212, 255, .2), transparent 60%);
+  opacity: 0;
+  transition: .4s;
+}
+
+.service-card:hover {
+  border-color: rgba(0, 212, 255, .4);
+  transform: translateY(-8px);
+}
+
+.service-card:hover::after {
+  opacity: 1;
+}
+
+.service-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, var(--bright-cyan), var(--cyan));
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: var(--deep-navy);
+  margin-bottom: 1.5rem;
+  transition: .6s;
+  transform: perspective(600px) rotateY(0);
+}
+
+.service-card:hover .service-icon {
+  transform: perspective(600px) rotateY(360deg) scale(1.06);
+}
+
+.service-card:nth-child(2) .service-icon {
+  background: linear-gradient(135deg, var(--bright-green), var(--green));
+}
+
+.service-card:nth-child(3) .service-icon {
+  background: linear-gradient(135deg, var(--orange), var(--yellow));
+}
+
+.service-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: .8rem;
+  color: var(--white);
+}
+
+.service-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, .85);
+  line-height: 1.85;
+}
+
+/* OUR VISION */
+.vision-section {
+  background: var(--navy);
+  text-align: center;
+}
+
+.vision-section h2 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.vision-text {
+  font-size: 1.3rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, .9);
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+}
+
+.vision-image {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0, 212, 255, .3);
+}
+
+.vision-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* VALUES */
+.values-section {
+  background: var(--deep-navy);
+  text-align: center;
+}
+
+.values-section h2 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.values-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, .85);
+  margin-bottom: 4rem;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.value-card {
+  background: rgba(255, 255, 255, .04);
+  padding: 2.5rem;
+  border-radius: 28px;
+  border: 1px solid rgba(0, 212, 255, .12);
+  transition: all .4s;
+  text-align: left;
+}
+
+.value-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(0, 212, 255, .35);
+  background: rgba(255, 255, 255, .08);
+}
+
+.value-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.value-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--bright-cyan);
+  margin-bottom: 1rem;
+}
+
+.value-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, .85);
+  line-height: 1.85;
+}
+
+/* LEADERSHIP */
+.leadership-section {
+  background: var(--navy);
+  text-align: center;
+}
+
+.leadership-section h2 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: 4rem;
+  font-weight: 500;
+}
+
+.leadership-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.leader-card {
+  background: rgba(255, 255, 255, .04);
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 212, 255, .15);
+  transition: all .5s;
+}
+
+.leader-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 40px 100px rgba(0, 212, 255, .3);
+  border-color: rgba(0, 212, 255, .3);
+}
+
+.leader-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.leader-info {
+  padding: 2.5rem;
+  text-align: left;
+}
+
+.leader-name {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--bright-cyan);
+  margin-bottom: .5rem;
+}
+
+.leader-role {
+  font-size: 1.1rem;
+  color: var(--bright-green);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.leader-bio {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, .85);
+  margin-bottom: 1.5rem;
+}
+
+.leader-quote {
+  font-style: italic;
+  color: rgba(255, 255, 255, .7);
+  border-left: 3px solid var(--bright-cyan);
+  padding-left: 1.5rem;
+  font-size: .95rem;
+}
+
+/* STATS */
+.stats-section {
+  background: linear-gradient(135deg, var(--bright-cyan), var(--orange));
+  text-align: center;
+}
+
+.stats-section h2 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: 4rem;
+  font-weight: 500;
+  color: var(--deep-navy);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, .15);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, .2);
+  transition: all .4s;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, .25);
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+  margin-bottom: .5rem;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: var(--deep-navy);
+  font-weight: 600;
+}
+
+/* CTA */
+.cta-section {
+  background: var(--deep-navy);
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.cta-text {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, .9);
+  margin-bottom: 3rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--bright-cyan), var(--cyan));
+  color: var(--deep-navy);
+  padding: 1.3rem 3.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 20px 60px rgba(0, 212, 255, .4);
+  transition: all .3s;
+}
+
+.cta-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 80px rgba(0, 212, 255, .5);
+}
+
+/* FOOTER */
+footer {
+  background: var(--navy);
+  padding: 4rem 2rem 2rem;
+  border-top: 1px solid rgba(0, 212, 255, .15);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto 3rem;
+}
+
+.footer-brand h3 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.footer-brand p {
+  color: rgba(255, 255, 255, .7);
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+}
+
+.footer-column h4 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: .8rem;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, .75);
+  text-decoration: none;
+  transition: .25s;
+}
+
+.footer-links a:hover {
+  color: var(--bright-cyan);
+  padding-left: 8px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(0, 212, 255, .15);
+  padding-top: 2rem;
+  text-align: center;
+  color: rgba(255, 255, 255, .65);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .story-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .values-grid { grid-template-columns: repeat(2, 1fr); }
+  .leadership-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 1rem 2rem; }
+  .nav-links { display: none; }
+  .services-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .section { padding: 4rem 1.5rem; }
+  .hero { padding: 6rem 1.5rem 3rem; }
+  body { cursor: default; }
+  .cursor, .cursor-follower { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/">
+    <img src="https://demoo.savvymediaafrica.com/wp-content/uploads/2025/10/Savvy-Media-Africa-Logo-1.png" alt="Savvy Media Africa" class="nav-logo">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="floating-shape shape-1"></div>
+  <div class="floating-shape shape-2"></div>
+  <div class="hero-content">
+    <h1>
+      We Are <span class="text-cyan">Savvy</span> <span class="text-green">Media</span> <span class="text-orange">Africa</span>
+    </h1>
+    <p>Architects of Cultural Moments. Custodians of African Creativity. Partners in Your Brand's Legacy.</p>
+  </div>
+</section>
+
+<!-- OUR STORY -->
+<section class="story-section section">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-content">
+        <h2>Born from <span class="text-orange">Passion</span>, Built on <span class="text-cyan">Strategy</span></h2>
+        <p class="story-text">
+          Savvy Media Africa isn't just an agency. We're <strong>architects of cultural moments</strong>, emerging from the powerful belief that African brands deserve world-class creative excellence without compromise.
+        </p>
+        <p class="story-text">
+          From <strong>MTN's groundbreaking Y'ello Couch</strong> to <strong>Filmhouse's entertainment dominance</strong> and <strong>MTN See Naija's cultural impact</strong>, we've proven that authentic African creativity breaks through global noise.
+        </p>
+        <p class="story-text">
+          <strong>Our mantra is simple:</strong> Create work that moves culture. Measure its impact. Repeat. Every campaign, every strategy, every pixel is guided by one unwavering principle—making work that doesn't just exist, but transforms.
+        </p>
+      </div>
+      <div class="story-image">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=900&auto=format&fit=crop" alt="Our Story">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="whatwedo-section section">
+  <div class="container">
+    <h2>What We <span class="text-green">Do</span></h2>
+    <p class="whatwedo-subtitle">From strategy to execution, we deliver integrated solutions that drive real results</p>
+    
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3 class="service-title">Creative Storytelling</h3>
+        <p class="service-description">Craft compelling narratives that capture hearts, move culture, and transform brands into household names across Africa.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+        <h3 class="service-title">Strategic Planning</h3>
+        <p class="service-description">Data-driven strategies that blend cultural insights with commercial objectives. Every decision backed by deep research.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
+        <h3 class="service-title">Campaign Execution</h3>
+        <p class="service-description">From concept to reality. We produce, distribute, amplify. Every touchpoint optimized for maximum impact.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-users"></i></div>
+        <h3 class="service-title">Media & Digital</h3>
+        <p class="service-description">Omnichannel campaigns that reach audiences where they are. Strategic media placement ensuring engagement.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-trophy"></i></div>
+        <h3 class="service-title">Brand Consulting</h3>
+        <p class="service-description">Define your brand voice. Refine your narrative. Develop strategies that create lasting competitive advantage.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-handshake"></i></div>
+        <h3 class="service-title">Long-term Partnerships</h3>
+        <p class="service-description">Ongoing creative and strategic support. We grow with your brand, ensuring sustained cultural relevance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR VISION -->
+<section class="vision-section section">
+  <div class="container">
+    <h2>Our <span class="text-cyan">Vision</span></h2>
+    <p class="vision-text">
+      To preserve the legacies of Africa's most influential brands through visual storytelling that transcends time and platforms—creating timeless moments that shape culture.
+    </p>
+    <div class="vision-image">
+      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=900&auto=format&fit=crop" alt="Our Vision">
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section section">
+  <div class="container">
+    <h2>Our Core <span class="text-orange">Values</span></h2>
+    <p class="values-subtitle">The principles that drive everything we create</p>
+    
+    <div class="values-grid">
+      <div class="value-card">
+        <span class="value-icon">🔥</span>
+        <h3 class="value-title">Creative Courage</h3>
+        <p class="value-description">We don't follow trends—we create them. Bold ideas. Fearless execution. Audacious vision.</p>
+      </div>
+
+      <div class="value-card">
+        <span class="value-icon">📊</span>
+        <h3 class="value-title">Results Obsession</h3>
+        <p class="value-description">We measure everything. Impact, engagement, sentiment, growth. Our work lives by real results.</p>
+      </div>
+
+      <div class="value-card">
+        <span class="value-icon">🌍</span>
+        <h3 class="value-title">Cultural Authenticity</h3>
+        <p class="value-description">Africa isn't a market to us—it's home. We create from genuine understanding of our culture and stories.</p>
+      </div>
+
+      <div class="value-card">
+        <span class="value-icon">👥</span>
+        <h3 class="value-title">Team Excellence</h3>
+        <p class="value-description">Our talent is our competitive advantage. We invest in people and cultivate creativity daily.</p>
+      </div>
+
+      <div class="value-card">
+        <span class="value-icon">🎯</span>
+        <h3 class="value-title">Strategic Precision</h3>
+        <p class="value-description">Beauty meets brains. Stunning creative powered by data. Every campaign brilliant AND commercially smart.</p>
+      </div>
+
+      <div class="value-card">
+        <span class="value-icon">🤝</span>
+        <h3 class="value-title">Partnership First</h3>
+        <p class="value-description">We're partners in your evolution. Your success is our obsession. We win when you win, period.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="leadership-section section">
+  <div class="container">
+    <h2>The <span class="text-cyan">Team</span> Behind The Movement</h2>
+    
+    <div class="leadership-grid">
+      <div class="leader-card">
+        <img src="https://demoo.savvymediaafrica.com/wp-content/uploads/2024/06/Tofunmi-Akinseye-1.png" alt="CEO" class="leader-image">
+        <div class="leader-info">
+          <h3 class="leader-name">Tofunmi Akinseye</h3>
+          <p class="leader-role">Founder & Chief Storyteller</p>
+          <p class="leader-bio">
+            With 12+ years of African media expertise, Tofunmi drives every campaign with cultural insight and strategic precision. Her vision has shaped some of Africa's most memorable brand moments.
+          </p>
+          <p class="leader-quote">"Every brand has a story. Our job is to tell it in a way that moves culture."</p>
+        </div>
+      </div>
+
+      <div class="leader-card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=500&auto=format&fit=crop" alt="Creative Team" class="leader-image">
+        <div class="leader-info">
+          <h3 class="leader-name">Creative Excellence Team</h3>
+          <p class="leader-role">Design & Production</p>
+          <p class="leader-bio">
+            Award-winning creatives crafting culturally magnetic campaigns that capture hearts and drive results. Our team brings decades of combined experience in storytelling.
+          </p>
+          <p class="leader-quote">"Creativity without culture is just noise. We make music."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section section">
+  <div class="container">
+    <h2>The Impact We've Created</h2>
+    
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">500M+</div>
+        <div class="stat-label">Total Impressions</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number">85%</div>
+        <div class="stat-label">Client Retention</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number">60+</div>
+        <div class="stat-label">Creative Professionals</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number">30+</div>
+        <div class="stat-label">Awards & Recognition</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section section">
+  <div class="container">
+    <h2>
+      Ready to Transform Your <span class="text-green">Brand?</span>
+    </h2>
+    <p class="cta-text">
+      Let's create magic together. Your vision. Our expertise. African creativity at its finest.
+    </p>
+    <a href="mailto:hello@savvymediaafrica.com" class="cta-btn">Get Started <i class="fas fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>SAVVY MEDIA</h3>
+      <p>Africa's leading creative and media agency. Where creativity lives, results matter.</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Services</h4>
+      <ul class="footer-links">
+        <li><a href="#">Creative Campaigns</a></li>
+        <li><a href="#">Media & Distribution</a></li>
+        <li><a href="#">PR & Reputation</a></li>
+        <li><a href="#">Consulting</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Company</h4>
+      <ul class="footer-links">
+        <li><a href="/about">About Us</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#">Insights</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Contact</h4>
+      <ul class="footer-links">
+        <li><a href="mailto:hello@savvymediaafrica.com">hello@savvymediaafrica.com</a></li>
+        <li><a href="tel:+2348134737798">+234 813 473 7798</a></li>
+        <li>Impact Hub, Ikoyi, Lagos</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Savvy Media Africa. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// Custom Cursor
+const cursor = document.querySelector('.cursor');
+const cursorFollower = document.querySelector('.cursor-follower');
+
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = (e.clientX - 4) + 'px';
+  cursor.style.top = (e.clientY - 4) + 'px';
+  
+  setTimeout(() => {
+    cursorFollower.style.left = (e.clientX - 16) + 'px';
+    cursorFollower.style.top = (e.clientY - 16) + 'px';
+  }, 60);
+});
+
+document.addEventListener('mouseover', (e) => {
+  const interactive = e.target.closest('a, button, .service-card, .value-card, .leader-card, .stat-card');
+  if (interactive) {
+    cursor.style.transform = 'scale(1.6)';
+    cursor.style.opacity = '1';
+    cursorFollower.style.transform = 'scale(2.2)';
+    cursorFollower.style.borderColor = 'var(--bright-cyan)';
+    cursorFollower.style.boxShadow = '0 0 16px var(--bright-cyan), inset 0 0 12px rgba(0,212,255,.4)';
+  }
+});
+
+document.addEventListener('mouseout', (e) => {
+  const interactive = e.target.closest('a, button, .service-card, .value-card, .leader-card, .stat-card');
+  if (interactive) {
+    cursor.style.transform = 'scale(1)';
+    cursor.style.opacity = '0.8';
+    cursorFollower.style.transform = 'scale(1)';
+    cursorFollower.style.borderColor = 'var(--bright-cyan)';
+    cursorFollower.style.boxShadow = 'inset 0 0 8px rgba(0,212,255,.3)';
+  }
+});
+
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  window.scrollY > 50 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled');
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) {
+      e.preventDefault();
+      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// GSAP Animations
+gsap.registerPlugin(ScrollTrigger);
+
+// Story section
+gsap.from('.story-content h2', {
+  scrollTrigger: { trigger: '.story-section', start: 'top 75%' },
+  x: -80,
+  opacity: 0,
+  duration: 1,
+  ease: 'power3.out'
+});
+
+gsap.from('.story-text', {
+  scrollTrigger: { trigger: '.story-section', start: 'top 75%' },
+  x: -60,
+  opacity: 0,
+  duration: 1,
+  stagger: 0.2,
+  delay: 0.3,
+  ease: 'power3.out'
+});
+
+gsap.from('.story-image', {
+  scrollTrigger: { trigger: '.story-section', start: 'top 75%' },
+  x: 80,
+  opacity: 0,
+  duration: 1.2,
+  delay: 0.4,
+  ease: 'power3.out'
+});
+
+// Services
+gsap.from('.service-card', {
+  scrollTrigger: { trigger: '.whatwedo-section', start: 'top 75%' },
+  y: 80,
+  opacity: 0,
+  duration: 0.8,
+  stagger: 0.15,
+  ease: 'power3.out'
+});
+
+// Vision
+gsap.from('.vision-text', {
+  scrollTrigger: { trigger: '.vision-section', start: 'top 75%' },
+  y: 40,
+  opacity: 0,
+  duration: 0.9,
+  ease: 'power3.out'
+});
+
+gsap.from('.vision-image', {
+  scrollTrigger: { trigger: '.vision-section', start: 'top 75%' },
+  scale: 0.9,
+  opacity: 0,
+  duration: 1,
+  delay: 0.3,
+  ease: 'power3.out'
+});
+
+// Values
+gsap.from('.value-card', {
+  scrollTrigger: { trigger: '.values-section', start: 'top 75%' },
+  y: 70,
+  opacity: 0,
+  duration: 0.8,
+  stagger: 0.12,
+  ease: 'power3.out'
+});
+
+// Leadership
+gsap.from('.leader-card', {
+  scrollTrigger: { trigger: '.leadership-section', start: 'top 75%' },
+  scale: 0.85,
+  opacity: 0,
+  duration: 1,
+  stagger: 0.3,
+  ease: 'back.out(1.7)'
+});
+
+// Stats
+gsap.from('.stat-card', {
+  scrollTrigger: { trigger: '.stats-section', start: 'top 75%' },
+  scale: 0.5,
+  opacity: 0,
+  duration: 0.8,
+  stagger: 0.1,
+  ease: 'back.out(1.7)'
+});
+
+// Service card mouse glow
+document.querySelectorAll('.service-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--x', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--y', (e.clientY - r.top) + 'px');
+  });
+});
+</script>
+
+</body>
+</html>
