@@ -1,942 +1,1394 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>About Savvy Media Africa - Where Creativity Lives, Results Matter</title>
+
+<!-- Google Fonts: Using Sora -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-:root {
-  --deep-navy: #001d3d;
-  --navy: #002855;
-  --bright-cyan: #00D4FF;
-  --cyan: #00A8E8;
-  --bright-green: #00FF88;
-  --green: #00E676;
-  --orange: #FF6B35;
-  --yellow: #FFB800;
-  --white: #FFFFFF;
-}
-
-body {
-  font-family: 'Sora', sans-serif;
-  color: var(--white);
-  background: var(--deep-navy);
-  overflow-x: hidden;
-  line-height: 1.6;
-  font-weight: 400;
-  cursor: none;
-}
-
-/* Custom Cursor */
-.cursor {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--bright-cyan);
-  pointer-events: none;
-  z-index: 99999;
-  opacity: .8;
-  transition: transform .1s ease;
-  mix-blend-mode: screen;
-  box-shadow: 0 0 12px var(--bright-cyan), 0 0 24px rgba(0,212,255,.5);
-}
-
-.cursor-follower {
-  position: fixed;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1.5px solid var(--bright-cyan);
-  pointer-events: none;
-  z-index: 99998;
-  opacity: .4;
-  transition: all .25s ease;
-  box-shadow: inset 0 0 8px rgba(0,212,255,.3);
-}
-
-h1, h2, h3, h4, h5, h6 { font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
-h1 { font-size: clamp(2.8rem, 8vw, 6rem); }
-h2 { font-size: clamp(2.2rem, 6vw, 4rem); }
-h3 { font-size: clamp(1.4rem, 3vw, 2rem); }
-
-/* NAV - FIXED */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  padding: 1.5rem 3rem;
-  z-index: 9000;
-  transition: all .35s ease;
-  background: transparent;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 100%;
-  margin: 0;
-}
-
-nav.scrolled {
-  background: #ffffff;
-  box-shadow: 0 4px 30px rgba(0,0,0,.12);
-  padding: 1rem 3rem;
-}
-
-.nav-logo {
-  height: 50px;
-  width: auto;
-  display: block;
-  filter: brightness(1) invert(0);
-}
-
-nav.scrolled .nav-logo {
-  filter: none;
-}
-
-.nav-links {
-  display: flex;
-  gap: 2.5rem;
-  list-style: none;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+:root{
+  --deep-navy:#001d3d;
+  --navy:#002855;
+  --bright-cyan:#00D4FF;
+  --cyan:#00A8E8;
+  --bright-green:#00FF88;
+  --green:#00E676;
+  --orange:#FF6B35;
+  --yellow:#FFB800;
+  --white:#FFFFFF;
+  --section-pad:8rem;
+}
+
+body{
+  font-family:'Sora',sans-serif;
+  color:var(--white);
+  background:var(--deep-navy);
+  overflow-x:hidden;
+  line-height:1.6;
+  font-weight:400;
+  cursor:none
+}
+
+.cursor{
+  position:fixed;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--bright-cyan);
+  pointer-events:none;
+  z-index:99999;
+  opacity:.8;
+  transition:transform .1s ease;
+  mix-blend-mode:screen;
+  box-shadow:0 0 12px var(--bright-cyan),0 0 24px rgba(0,212,255,.5)
+}
+
+.cursor-follower{
+  position:fixed;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  border:1.5px solid var(--bright-cyan);
+  pointer-events:none;
+  z-index:99998;
+  opacity:.4;
+  transition:all .25s ease;
+  box-shadow:inset 0 0 8px rgba(0,212,255,.3)
+}
+
+h1,h2,h3,h4,h5,h6{font-weight:500;line-height:1.1;letter-spacing:-0.02em}
+h1{font-size:clamp(3rem,9vw,10rem)}
+h2{font-size:clamp(2.2rem,6vw,5.5rem)}
+h3{font-size:clamp(1.6rem,4vw,2.8rem)}
+
+.underline-text{display:inline-block;position:relative;padding-bottom:6px}
+.underline-text::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:4px;background:var(--bright-cyan);border-radius:2px}
+.underline-green::after{background:var(--bright-green)}
+.underline-orange::after{background:var(--orange)}
+
+/* ========== NAV ========== */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:1.8rem 4rem;
+  z-index:9000;
+  transition:all .35s ease;
+  background:transparent
+}
+
+nav .nav-container{
+  max-width:1800px;
+  margin:0 auto;
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+  gap:auto;
+  width:100%
+}
+
+.nav-logo{
+  flex-shrink:0;
+  margin-right:auto
+}
+
+.nav-logo img{height:50px;width:auto;display:block;filter:brightness(1) invert(0)}
+
+.nav-links{
+  display:flex;
+  gap:2.6rem;
+  list-style:none;
+  align-items:center;
+  position:static
+}
+
+.nav-links a{
+  color:var(--white);
+  text-decoration:none;
+  font-weight:700;
+  font-size:1rem;
+  position:relative;
+  transition:.25s
+}
+
+.nav-links a::before{
+  content:'';
+  position:absolute;
+  bottom:-5px;
+  left:0;
+  width:0;
+  height:3px;
+  background:var(--bright-cyan);
+  transition:width .25s;
+  border-radius:2px
+}
+
+.nav-links a:hover::before{width:100%}
+.nav-links a.active::before{width:100%}
+
+.mobile-menu-btn{
+  display:none;
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:2rem;
+  cursor:pointer;
+  z-index:9100;
+  flex-shrink:0
+}
+
+.nav-search{
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:1.3rem;
+  cursor:pointer;
+  transition:.25s;
+  margin-left:2.6rem;
+  flex-shrink:0
+}
+
+.nav-search:hover{
+  color:var(--bright-cyan);
+  transform:scale(1.1)
+}
+
+nav.scrolled{
+  background:#ffffff;
+  box-shadow:0 4px 30px rgba(0,0,0,.12);
+  padding:1.2rem 4rem
+}
+
+nav.scrolled .nav-links a{color:var(--navy)}
+nav.scrolled .nav-links a::before{background:var(--navy)}
+nav.scrolled .nav-logo img{filter:none}
+nav.scrolled .nav-search{color:var(--navy)}
+nav.scrolled .nav-search:hover{color:var(--bright-cyan)}
+nav.scrolled .mobile-menu-btn{color:var(--navy)}
+
+.search-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  z-index:9150;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s ease;
+  backdrop-filter:blur(4px)
+}
+
+.search-overlay.open{
+  opacity:1;
+  pointer-events:auto
+}
+
+.search-modal{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  width:100%;
+  max-width:800px;
+  margin:0 auto;
+  background:var(--deep-navy);
+  z-index:9151;
+  padding:4rem 2rem;
+  transform:translateY(-100%);
+  transition:transform .3s ease;
+  border-bottom:2px solid var(--bright-cyan)
+}
+
+.search-modal.open{
+  transform:translateY(0)
+}
+
+.search-close{
+  position:absolute;
+  top:2rem;
+  right:2rem;
+  background:none;
+  border:none;
+  color:var(--bright-cyan);
+  font-size:2rem;
+  cursor:pointer;
+  z-index:1;
+  transition:.25s
+}
+
+.search-close:hover{
+  transform:rotate(90deg);
+  color:var(--white)
+}
+
+.search-content{
+  text-align:center
+}
+
+.search-content h2{
+  font-size:2.5rem;
+  margin-bottom:2rem;
+  color:var(--white)
+}
+
+.search-input{
+  width:100%;
+  max-width:600px;
+  padding:1rem 2rem;
+  font-size:1.1rem;
+  border:2px solid var(--bright-cyan);
+  border-radius:999px;
+  background:rgba(0,212,255,.05);
+  color:var(--white);
+  font-family:'Sora',sans-serif;
+  transition:.3s;
+  outline:none
+}
+
+.search-input::placeholder{
+  color:rgba(255,255,255,.5)
+}
+
+.search-input:focus{
+  border-color:var(--bright-green);
+  background:rgba(0,212,255,.1);
+  box-shadow:0 0 20px rgba(0,212,255,.3)
+}
+
+.search-results{
+  margin-top:2rem;
+  text-align:left;
+  max-width:600px;
+  margin-left:auto;
+  margin-right:auto
+}
+
+.search-result-item{
+  display:block;
+  padding:1.5rem;
+  margin-bottom:1rem;
+  border-radius:12px;
+  background:rgba(0,212,255,.08);
+  border:1px solid rgba(0,212,255,.2);
+  text-decoration:none;
+  transition:.3s;
+  cursor:pointer
+}
+
+.search-result-item:hover{
+  background:rgba(0,212,255,.15);
+  border-color:rgba(0,212,255,.4);
+  transform:translateX(8px)
+}
+
+.search-result-item h3{
+  font-size:1.1rem;
+  margin-bottom:.5rem
+}
+
+.search-result-item p{
+  font-size:.95rem;
+  color:rgba(255,255,255,.7);
+  margin:0
+}
+
+.mobile-menu{
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:80%;
+  max-width:300px;
+  height:100vh;
+  background:var(--deep-navy);
+  padding:6rem 2rem 2rem;
+  z-index:9050;
+  transition:right .35s ease;
+  overflow-y:auto;
+  box-shadow:-4px 0 20px rgba(0,0,0,.5)
+}
+
+.mobile-menu.open{
+  right:0
+}
+
+.mobile-menu ul{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:2rem
+}
+
+.mobile-menu a{
+  color:var(--white);
+  text-decoration:none;
+  font-weight:700;
+  font-size:1.2rem;
+  display:block;
+  transition:.25s
+}
+
+.mobile-menu a:hover{
+  color:var(--bright-cyan)
+}
+
+.mobile-menu-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  z-index:9049;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s ease
+}
+
+.mobile-menu-overlay.open{
+  opacity:1;
+  pointer-events:auto
+}
+
+/* ========== HERO ========== */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  padding:12rem 4rem 6rem;
+  overflow:hidden;
+  background:linear-gradient(135deg,var(--deep-navy) 0%,var(--navy) 100%)
+}
+
+.floating-shape{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(120px);
+  opacity:.12;
+  pointer-events:none;
+  animation:float 20s ease-in-out infinite
+}
+
+.shape-1{
+  width:700px;
+  height:700px;
+  background:linear-gradient(135deg,var(--bright-cyan),var(--cyan));
+  top:10%;
+  left:5%
+}
+
+.shape-2{
+  width:600px;
+  height:600px;
+  background:linear-gradient(135deg,var(--orange),var(--yellow));
+  bottom:6%;
+  right:5%;
+  animation-delay:-10s
+}
+
+@keyframes float{
+  0%,100%{transform:translate(0,0) scale(1)}
+  25%{transform:translate(50px,-50px) scale(1.1)}
+  50%{transform:translate(80px,-80px) scale(1.2)}
+  75%{transform:translate(30px,-40px) scale(1.15)}
+}
+
+.hero-content{text-align:center;max-width:1600px;position:relative;z-index:2}
+
+.hero-title{
+  font-family:'Sora',sans-serif;
+  font-size:clamp(3rem,9.6vw,10.6rem);
+  font-weight:500;
+  line-height:1.05;
+  margin-bottom:1.6rem
+}
+
+.title-line{display:block;margin-bottom:.6rem}
+
+.word{
+  display:inline-block;
+  margin-right:.25em;
+  position:relative;
+  opacity:0;
+  transform:translate3d(0,100px,0) scale(.9) rotate(4deg)
+}
+
+.word.cyan{color:var(--bright-cyan)}
+.word.green{color:var(--bright-green)}
+.word.orange{color:var(--orange)}
+
+.word.gradient-cyan{
+  background:linear-gradient(135deg,var(--bright-cyan),var(--cyan));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+  display:inline;
+  line-height:1
+}
+
+.comma{display:inline-block;transform:translateY(-.12em);opacity:0}
+
+.hero-pills-container{
+  display:flex;
+  justify-content:center;
+  gap:1.2rem;
+  flex-wrap:wrap;
+  margin:1.2rem 0
+}
+
+.hero-pill{
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);
+  padding:.9rem 1.8rem;
+  border-radius:999px;
+  font-size:1rem;
+  font-weight:700;
+  border:1px solid rgba(0,212,255,.2);
+  opacity:0;
+  transform:scale(.9)
+}
+
+.hero-pill.cyan{
+  background:linear-gradient(135deg,var(--bright-cyan),var(--cyan));
+  border:none;
+  color:var(--deep-navy)
+}
+
+.hero-subtitle{
+  font-size:clamp(1.05rem,2vw,1.35rem);
+  color:rgba(255,255,255,.9);
+  max-width:900px;
+  margin:1.1rem auto 0;
+  line-height:1.9;
+  opacity:0;
+  font-weight:400
+}
+
+/* ========== SECTIONS ========== */
+.section{padding:var(--section-pad) 2rem}
+
+.section-label{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--orange),var(--yellow));
+  color:var(--deep-navy);
+  padding:.7rem 1.6rem;
+  border-radius:999px;
+  font-size:.88rem;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  margin-bottom:1.2rem
+}
+
+.section-title{
+  font-size:clamp(2.6rem,6vw,5.5rem);
+  font-weight:500;
+  margin-bottom:.8rem;
+  text-align:center
+}
+
+.section-subtitle{
+  font-size:1.25rem;
+  color:rgba(255,255,255,.85);
+  text-align:center;
+  max-width:900px;
+  margin:0 auto 3rem;
+  font-weight:400
+}
+
+.title-animate{display:inline-block;overflow:hidden}
+.title-animate .tword{display:inline-block;transform:translateY(115%);opacity:0}
+
+/* ========== ABOUT STORY SECTION ========== */
+.about-story{
+  padding:var(--section-pad) 2rem;
+  background:var(--navy);
+}
+
+.story-container{
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5rem;
+  align-items:center
+}
+
+.story-content h2{
+  font-size:clamp(2.2rem,5vw,4.5rem);
+  font-weight:500;
+  line-height:1.15;
+  margin-bottom:2rem
+}
+
+.story-content h2 .orange{color:var(--orange)}
+.story-content h2 .cyan{color:var(--bright-cyan)}
+
+.story-text{
+  font-size:1.15rem;
+  line-height:1.85;
+  color:rgba(255,255,255,.9);
+  margin-bottom:1.8rem;
+  font-weight:400
+}
 
-.nav-links a {
-  color: var(--white);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1rem;
-  position: relative;
-  transition: .25s;
-}
+.story-highlights{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2rem;
+  margin-top:2.4rem
+}
 
-.nav-links a::before {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background: var(--bright-cyan);
-  transition: width .25s;
-  border-radius: 2px;
+.highlight-card{
+  background:rgba(0,212,255,.08);
+  border:1px solid rgba(0,212,255,.2);
+  padding:2rem;
+  border-radius:20px;
+  transition:.35s
 }
 
-.nav-links a:hover::before { width: 100%; }
+.highlight-card:hover{
+  background:rgba(0,212,255,.15);
+  border-color:rgba(0,212,255,.4);
+  transform:translateY(-8px)
+}
 
-nav.scrolled .nav-links a { color: var(--navy); }
-nav.scrolled .nav-links a::before { background: var(--navy); }
-
-/* HERO - PROPER SPACING */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8rem 2rem 4rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--deep-navy) 0%, var(--navy) 100%);
-  margin: 0;
-}
-
-.floating-shape {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: .12;
-  pointer-events: none;
-  animation: float 20s ease-in-out infinite;
-}
-
-.shape-1 {
-  width: 700px;
-  height: 700px;
-  background: linear-gradient(135deg, var(--bright-cyan), var(--cyan));
-  top: 10%;
-  left: 5%;
-}
-
-.shape-2 {
-  width: 600px;
-  height: 600px;
-  background: linear-gradient(135deg, var(--orange), var(--yellow));
-  bottom: 6%;
-  right: 5%;
-  animation-delay: -10s;
-}
-
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(50px, -50px) scale(1.1); }
-  50% { transform: translate(80px, -80px) scale(1.2); }
-  75% { transform: translate(30px, -40px) scale(1.15); }
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.hero h1 {
-  font-weight: 500;
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
-}
-
-.hero p {
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  color: rgba(255, 255, 255, .9);
-  line-height: 1.8;
-}
-
-.text-cyan { color: var(--bright-cyan); }
-.text-green { color: var(--bright-green); }
-.text-orange { color: var(--orange); }
-
-/* SECTIONS */
-.section {
-  padding: 6rem 2rem;
-  position: relative;
-  margin: 0;
-}
-
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-/* OUR STORY */
-.story-section {
-  background: var(--navy);
-}
-
-.story-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-}
-
-.story-content h2 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  margin-bottom: 2rem;
-  font-weight: 500;
-}
-
-.story-text {
-  font-size: 1.1rem;
-  line-height: 1.9;
-  color: rgba(255, 255, 255, .9);
-  margin-bottom: 1.5rem;
-}
-
-.story-text strong {
-  color: var(--bright-cyan);
-  font-weight: 600;
-}
-
-.story-image {
-  border-radius: 28px;
-  overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 212, 255, .25);
-}
-
-.story-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* WHAT WE DO */
-.whatwedo-section {
-  background: var(--deep-navy);
-  text-align: center;
-}
-
-.whatwedo-section h2 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  margin-bottom: 1rem;
-  font-weight: 500;
-}
-
-.whatwedo-subtitle {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, .85);
-  margin-bottom: 4rem;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
-  margin-top: 3rem;
-}
-
-.service-card {
-  background: rgba(255, 255, 255, .04);
-  backdrop-filter: blur(10px);
-  padding: 2.5rem;
-  border-radius: 28px;
-  border: 1px solid rgba(0, 212, 255, .15);
-  transition: all .45s;
-  text-align: left;
-  position: relative;
-  overflow: hidden;
-}
-
-.service-card::after {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 29px;
-  background: radial-gradient(500px 200px at var(--x, 50%) var(--y, 50%), rgba(0, 212, 255, .2), transparent 60%);
-  opacity: 0;
-  transition: .4s;
-}
-
-.service-card:hover {
-  border-color: rgba(0, 212, 255, .4);
-  transform: translateY(-8px);
-}
-
-.service-card:hover::after {
-  opacity: 1;
-}
-
-.service-icon {
-  width: 70px;
-  height: 70px;
-  background: linear-gradient(135deg, var(--bright-cyan), var(--cyan));
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  color: var(--deep-navy);
-  margin-bottom: 1.5rem;
-  transition: .6s;
-  transform: perspective(600px) rotateY(0);
-}
-
-.service-card:hover .service-icon {
-  transform: perspective(600px) rotateY(360deg) scale(1.06);
-}
-
-.service-card:nth-child(2) .service-icon {
-  background: linear-gradient(135deg, var(--bright-green), var(--green));
-}
-
-.service-card:nth-child(3) .service-icon {
-  background: linear-gradient(135deg, var(--orange), var(--yellow));
-}
-
-.service-title {
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin-bottom: .8rem;
-  color: var(--white);
-}
-
-.service-description {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, .85);
-  line-height: 1.85;
-}
-
-/* OUR VISION */
-.vision-section {
-  background: var(--navy);
-  text-align: center;
+.highlight-number{
+  font-size:2.8rem;
+  font-weight:600;
+  background:linear-gradient(135deg,var(--bright-cyan),var(--orange));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:.5rem
+}
+
+.highlight-label{
+  font-size:.95rem;
+  color:rgba(255,255,255,.8);
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  font-weight:500
+}
+
+.story-image{
+  position:relative;
+  opacity:0;
+  transform:scale(.95)
+}
+
+.story-image img{
+  width:100%;
+  border-radius:28px;
+  box-shadow:0 30px 80px rgba(0,0,0,.5)
+}
+
+.story-badge{
+  position:absolute;
+  bottom:-15px;
+  left:30px;
+  background:var(--bright-green);
+  color:var(--deep-navy);
+  padding:1.5rem 2.5rem;
+  border-radius:18px;
+  box-shadow:0 15px 50px rgba(0,255,136,.35);
+  animation:floatBadge 4s ease-in-out infinite;
+  z-index:10;
+  font-weight:600;
+  font-size:1.1rem
+}
+
+@keyframes floatBadge{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+
+/* ========== MISSION & VALUES ========== */
+.mission-section{
+  padding:var(--section-pad) 2rem;
+  background:var(--deep-navy)
 }
 
-.vision-section h2 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  margin-bottom: 2rem;
-  font-weight: 500;
+.mission-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  max-width:1400px;
+  margin:0 auto
 }
 
-.vision-text {
-  font-size: 1.3rem;
-  line-height: 1.9;
-  color: rgba(255, 255, 255, .9);
-  max-width: 1000px;
-  margin: 0 auto 3rem;
+.mission-card{
+  opacity:0;
+  transform:translateY(40px)
 }
 
-.vision-image {
-  max-width: 900px;
-  margin: 0 auto;
-  border-radius: 28px;
-  overflow: hidden;
-  box-shadow: 0 40px 100px rgba(0, 212, 255, .3);
+.mission-card h3{
+  font-size:2.2rem;
+  margin-bottom:1.2rem;
+  color:var(--bright-cyan)
 }
 
-.vision-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* VALUES */
-.values-section {
-  background: var(--deep-navy);
-  text-align: center;
-}
-
-.values-section h2 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  margin-bottom: 1rem;
-  font-weight: 500;
-}
+.mission-card h3 .orange{color:var(--orange)}
+.mission-card h3 .green{color:var(--bright-green)}
 
-.values-subtitle {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, .85);
-  margin-bottom: 4rem;
+.mission-card p{
+  font-size:1.12rem;
+  line-height:1.9;
+  color:rgba(255,255,255,.88);
+  font-weight:400
 }
 
-.values-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
+/* ========== VALUES GRID ========== */
+.values-section{
+  padding:var(--section-pad) 2rem;
+  background:var(--navy)
 }
 
-.value-card {
-  background: rgba(255, 255, 255, .04);
-  padding: 2.5rem;
-  border-radius: 28px;
-  border: 1px solid rgba(0, 212, 255, .12);
-  transition: all .4s;
-  text-align: left;
+.values-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2.8rem;
+  max-width:1400px;
+  margin:0 auto;
+  margin-top:2rem
 }
 
-.value-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(0, 212, 255, .35);
-  background: rgba(255, 255, 255, .08);
+.value-card{
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(10px);
+  padding:2.8rem;
+  border-radius:28px;
+  border:1px solid rgba(0,212,255,.15);
+  transition:.45s;
+  opacity:0;
+  transform:translateY(50px);
+  position:relative;
+  overflow:hidden;
+  text-align:center
 }
 
-.value-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  display: block;
+.value-card::after{
+  content:'';
+  position:absolute;
+  inset:-1px;
+  border-radius:29px;
+  background:radial-gradient(500px 200px at var(--x,50%) var(--y,50%),rgba(0,212,255,.2),transparent 60%);
+  opacity:0;
+  transition:.4s
 }
 
-.value-title {
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: var(--bright-cyan);
-  margin-bottom: 1rem;
+.value-card:hover{
+  border-color:rgba(0,212,255,.4);
+  transform:translateY(-8px)
 }
 
-.value-description {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, .85);
-  line-height: 1.85;
-}
-
-/* LEADERSHIP */
-.leadership-section {
-  background: var(--navy);
-  text-align: center;
-}
+.value-card:hover::after{opacity:1}
 
-.leadership-section h2 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  margin-bottom: 4rem;
-  font-weight: 500;
+.value-icon{
+  width:80px;
+  height:80px;
+  background:linear-gradient(135deg,var(--bright-cyan),var(--cyan));
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2.2rem;
+  color:var(--deep-navy);
+  margin:0 auto 1.4rem;
+  transition:.6s
 }
 
-.leadership-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  max-width: 1200px;
-  margin: 0 auto;
+.value-card:nth-child(2) .value-icon{
+  background:linear-gradient(135deg,var(--bright-green),var(--green))
 }
 
-.leader-card {
-  background: rgba(255, 255, 255, .04);
-  border-radius: 28px;
-  overflow: hidden;
-  border: 1px solid rgba(0, 212, 255, .15);
-  transition: all .5s;
+.value-card:nth-child(3) .value-icon{
+  background:linear-gradient(135deg,var(--orange),var(--yellow))
 }
 
-.leader-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 40px 100px rgba(0, 212, 255, .3);
-  border-color: rgba(0, 212, 255, .3);
+.value-card:hover .value-icon{
+  transform:perspective(600px) rotateY(360deg) scale(1.1)
 }
 
-.leader-image {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  display: block;
+.value-card h4{
+  font-size:1.6rem;
+  font-weight:600;
+  margin-bottom:.8rem;
+  position:relative;
+  z-index:1
 }
 
-.leader-info {
-  padding: 2.5rem;
-  text-align: left;
+.value-card p{
+  font-size:1.02rem;
+  color:rgba(255,255,255,.82);
+  line-height:1.8;
+  font-weight:400;
+  position:relative;
+  z-index:1
 }
 
-.leader-name {
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: var(--bright-cyan);
-  margin-bottom: .5rem;
+/* ========== TEAM SECTION ========== */
+.team-section{
+  padding:var(--section-pad) 2rem;
+  background:var(--deep-navy)
 }
 
-.leader-role {
-  font-size: 1.1rem;
-  color: var(--bright-green);
-  font-weight: 600;
-  margin-bottom: 1.5rem;
+.team-container{
+  max-width:1600px;
+  margin:0 auto
 }
 
-.leader-bio {
-  font-size: 1rem;
-  line-height: 1.85;
-  color: rgba(255, 255, 255, .85);
-  margin-bottom: 1.5rem;
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:3rem;
+  margin-top:2rem
 }
 
-.leader-quote {
-  font-style: italic;
-  color: rgba(255, 255, 255, .7);
-  border-left: 3px solid var(--bright-cyan);
-  padding-left: 1.5rem;
-  font-size: .95rem;
+.team-member{
+  opacity:0;
+  transform:translateY(40px);
+  position:relative;
+  border-radius:24px;
+  overflow:hidden;
+  background:linear-gradient(135deg,rgba(0,212,255,.1),rgba(255,107,53,.05));
+  border:1px solid rgba(0,212,255,.15);
+  transition:.45s
 }
 
-/* STATS */
-.stats-section {
-  background: linear-gradient(135deg, var(--bright-cyan), var(--orange));
-  text-align: center;
+.team-member:hover{
+  border-color:rgba(0,212,255,.3);
+  transform:translateY(-12px);
+  box-shadow:0 20px 60px rgba(0,212,255,.2)
 }
 
-.stats-section h2 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  margin-bottom: 4rem;
-  font-weight: 500;
-  color: var(--deep-navy);
+.team-image{
+  width:100%;
+  height:380px;
+  overflow:hidden;
+  position:relative
 }
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+.team-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .6s
 }
 
-.stat-card {
-  background: rgba(255, 255, 255, .15);
-  backdrop-filter: blur(10px);
-  padding: 2.5rem 2rem;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, .2);
-  transition: all .4s;
+.team-member:hover .team-image img{
+  transform:scale(1.1)
 }
 
-.stat-card:hover {
-  transform: translateY(-8px);
-  background: rgba(255, 255, 255, .25);
+.team-info{
+  padding:2rem
 }
 
-.stat-number {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--deep-navy);
-  margin-bottom: .5rem;
-  line-height: 1;
+.team-name{
+  font-size:1.6rem;
+  font-weight:600;
+  margin-bottom:.4rem;
+  color:var(--bright-cyan)
 }
 
-.stat-label {
-  font-size: 1rem;
-  color: var(--deep-navy);
-  font-weight: 600;
+.team-role{
+  font-size:1rem;
+  color:var(--bright-green);
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  margin-bottom:1rem
 }
 
-/* CTA */
-.cta-section {
-  background: var(--deep-navy);
-  text-align: center;
+.team-bio{
+  font-size:1rem;
+  line-height:1.8;
+  color:rgba(255,255,255,.8);
+  font-weight:400;
+  margin-bottom:1.5rem
 }
 
-.cta-section h2 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  margin-bottom: 2rem;
-  font-weight: 500;
+.team-socials{
+  display:flex;
+  gap:1rem
 }
 
-.cta-text {
-  font-size: 1.3rem;
-  color: rgba(255, 255, 255, .9);
-  margin-bottom: 3rem;
+.team-social{
+  width:40px;
+  height:40px;
+  background:rgba(0,212,255,.15);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--bright-cyan);
+  text-decoration:none;
+  transition:.25s;
+  border:1px solid rgba(0,212,255,.25)
 }
 
-.cta-btn {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--bright-cyan), var(--cyan));
-  color: var(--deep-navy);
-  padding: 1.3rem 3.5rem;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  box-shadow: 0 20px 60px rgba(0, 212, 255, .4);
-  transition: all .3s;
+.team-social:hover{
+  background:var(--bright-cyan);
+  color:var(--deep-navy);
+  transform:translateY(-3px) rotate(360deg)
 }
 
-.cta-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 30px 80px rgba(0, 212, 255, .5);
+/* ========== CTA SECTION ========== */
+.about-cta{
+  padding:var(--section-pad) 2rem;
+  background:linear-gradient(135deg,var(--bright-cyan),var(--orange));
+  text-align:center
 }
 
-/* FOOTER */
-footer {
-  background: var(--navy);
-  padding: 4rem 2rem 2rem;
-  border-top: 1px solid rgba(0, 212, 255, .15);
+.cta-title{
+  font-family:'Sora',sans-serif;
+  font-size:clamp(2.6rem,7vw,5.5rem);
+  font-weight:500;
+  margin-bottom:.6rem;
+  color:var(--deep-navy)
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 3rem;
-  max-width: 1400px;
-  margin: 0 auto 3rem;
+.cta-subtitle{
+  font-size:1.4rem;
+  margin-bottom:2.2rem;
+  opacity:.96;
+  color:var(--deep-navy);
+  font-weight:400
 }
 
-.footer-brand h3 {
-  font-size: 2rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
+.btn-primary{
+  background:var(--deep-navy);
+  color:var(--bright-cyan);
+  padding:1.1rem 2.8rem;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:500;
+  font-size:1.05rem;
+  display:inline-flex;
+  align-items:center;
+  gap:.7rem;
+  box-shadow:0 10px 40px rgba(0,0,0,.3);
+  opacity:0;
+  transition:transform .2s,box-shadow .2s;
+  border:none;
+  cursor:pointer
 }
 
-.footer-brand p {
-  color: rgba(255, 255, 255, .7);
-  line-height: 1.9;
-  margin-bottom: 1.5rem;
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 15px 50px rgba(0,0,0,.4)
 }
 
-.footer-column h4 {
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  font-weight: 500;
+/* ========== FOOTER ========== */
+footer{
+  background:var(--deep-navy);
+  padding:4rem 2rem 2rem;
+  border-top:1px solid rgba(0,212,255,.15)
 }
 
-.footer-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:4.6rem;
+  max-width:1600px;
+  margin:0 auto 3.6rem
 }
 
-.footer-links li {
-  margin-bottom: .8rem;
-}
+.footer-brand h3{font-size:2.3rem;font-weight:500;margin-bottom:.8rem}
 
-.footer-links a {
-  color: rgba(255, 255, 255, .75);
-  text-decoration: none;
-  transition: .25s;
+.footer-brand p{
+  color:rgba(255,255,255,.7);
+  line-height:1.9;
+  margin-bottom:1.4rem;
+  font-weight:400
 }
 
-.footer-links a:hover {
-  color: var(--bright-cyan);
-  padding-left: 8px;
-}
+.social-links{display:flex;gap:1rem}
 
-.footer-bottom {
-  border-top: 1px solid rgba(0, 212, 255, .15);
-  padding-top: 2rem;
-  text-align: center;
-  color: rgba(255, 255, 255, .65);
+.social-link{
+  width:48px;
+  height:48px;
+  background:rgba(0,212,255,.1);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  transition:.25s;
+  border:1px solid rgba(0,212,255,.2);
+  text-decoration:none
 }
 
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  .story-grid { grid-template-columns: 1fr; }
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
-  .values-grid { grid-template-columns: repeat(2, 1fr); }
-  .leadership-grid { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
+.social-link:hover{
+  background:var(--bright-cyan);
+  color:var(--deep-navy);
+  transform:translateY(-3px) rotate(360deg);
+  border-color:var(--bright-cyan)
 }
 
-@media (max-width: 768px) {
-  nav { padding: 1rem 2rem; }
-  .nav-links { display: none; }
-  .services-grid { grid-template-columns: 1fr; }
-  .values-grid { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .section { padding: 4rem 1.5rem; }
-  .hero { padding: 6rem 1.5rem 3rem; }
-  body { cursor: default; }
-  .cursor, .cursor-follower { display: none; }
+.footer-column h4{font-size:1.15rem;margin-bottom:.8rem;font-weight:500}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:.6rem}
+
+.footer-links a{
+  color:rgba(255,255,255,.75);
+  text-decoration:none;
+  transition:.25s;
+  font-weight:400
+}
+
+.footer-links a:hover{
+  color:var(--bright-cyan);
+  padding-left:8px
+}
+
+.footer-bottom{
+  border-top:1px solid rgba(0,212,255,.15);
+  padding-top:1.6rem;
+  text-align:center;
+  color:rgba(255,255,255,.65);
+  font-weight:400
+}
+
+/* ========== SCROLL TOP ========== */
+.scroll-top{
+  position:fixed;
+  bottom:26px;
+  right:26px;
+  width:68px;
+  height:68px;
+  border-radius:50%;
+  z-index:9000;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  background:conic-gradient(var(--bright-cyan) calc(var(--scroll,0)*1%),rgba(0,212,255,.15) 0);
+  box-shadow:0 12px 35px rgba(0,212,255,.38),inset 0 0 0 8px rgba(0,29,61,.5);
+  transform:scale(.9) rotate(0deg);
+  opacity:0;
+  pointer-events:none;
+  transition:.25s ease;
+  border:none
+}
+
+.scroll-top.visible{
+  opacity:1;
+  pointer-events:auto;
+  transform:scale(1) rotate(0deg);
+}
+
+.scroll-top.scrolling{
+  animation:rotateProgress 0.8s linear infinite;
+}
+
+@keyframes rotateProgress{
+  0%{transform:scale(1) rotate(0deg)}
+  100%{transform:scale(1) rotate(360deg)}
+}
+
+.scroll-top .inner{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--navy);
+  color:#fff;
+  font-weight:500
+}
+
+.scroll-top .pct{font-size:.92rem}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width:1200px){
+  .values-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:1024px){
+  nav{padding:1.4rem 2rem}
+  .story-container{grid-template-columns:1fr}
+  .story-image{order:1}
+  .story-content{order:2}
+  .story-badge{right:50%;transform:translateX(50%)}
+  .mission-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+
+@media (max-width:768px){
+  nav{padding:1.2rem 2rem}
+  
+  nav .nav-container{
+    justify-content:space-between
+  }
+  
+  .nav-links{
+    display:none
+  }
+  
+  .mobile-menu-btn{
+    display:block;
+    order:3
+  }
+  
+  .nav-search{
+    order:2;
+    margin-left:auto;
+    margin-right:1rem
+  }
+  
+  .nav-logo{
+    order:1
+  }
+  
+  :root{--section-pad:4rem}
+  
+  .values-grid,.team-grid,.footer-grid{grid-template-columns:1fr}
+  
+  .story-highlights{grid-template-columns:1fr}
+  .story-badge{
+    position:static;
+    transform:none!important;
+    margin-top:-30px;
+    margin-left:20px;
+    width:fit-content;
+    animation:none
+  }
+  
+  body{cursor:default}
+  .cursor,.cursor-follower{display:none}
 }
 </style>
+
 </head>
 <body>
 
+<!-- Custom Cursor -->
 <div class="cursor"></div>
 <div class="cursor-follower"></div>
 
-<!-- NAV -->
+<!-- ========== NAV ========== -->
 <nav id="nav">
-  <a href="/">
-    <img src="https://demoo.savvymediaafrica.com/wp-content/uploads/2025/10/Savvy-Media-Africa-Logo-1.png" alt="Savvy Media Africa" class="nav-logo">
-  </a>
-  <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="nav-container">
+    <a href="index.php" class="nav-logo">
+      <img src="https://demoo.savvymediaafrica.com/wp-content/uploads/2025/10/Savvy-Media-Africa-Logo-1.png" alt="Savvy Media Africa">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.php">Home</a></li>
+      <li><a href="about.php" class="active">About</a></li>
+      <li><a href="work.php">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-search" aria-label="Search"><i class="fas fa-search"></i></button>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  </div>
 </nav>
 
-<!-- HERO -->
+<!-- Mobile Menu -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.php">Home</a></li>
+    <li><a href="about.php">About</a></li>
+    <li><a href="work.php">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div>
+
+<!-- Search Modal -->
+<div class="search-overlay" id="searchOverlay"></div>
+<div class="search-modal" id="searchModal">
+  <button class="search-close" id="searchClose" aria-label="Close search"><i class="fas fa-times"></i></button>
+  <div class="search-content">
+    <h2>Search</h2>
+    <input type="text" class="search-input" id="searchInput" placeholder="What are you looking for?">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- ========== HERO ========== -->
 <section class="hero">
-  <div class="floating-shape shape-1"></div>
-  <div class="floating-shape shape-2"></div>
+  <div class="floating-shape shape-1" data-parallax="-12"></div>
+  <div class="floating-shape shape-2" data-parallax="14"></div>
+
   <div class="hero-content">
-    <h1>
-      We Are <span class="text-cyan">Savvy</span> <span class="text-green">Media</span> <span class="text-orange">Africa</span>
-    </h1>
-    <p>Architects of Cultural Moments. Custodians of African Creativity. Partners in Your Brand's Legacy.</p>
+    <div class="hero-title">
+      <div class="title-line">
+        <span class="word">Architects</span>
+        <span class="word cyan">of</span>
+      </div>
+      <div class="title-line">
+        <span class="word green">African</span>
+        <span class="word orange">Creativity</span>
+      </div>
+      <div class="title-line">
+        <span class="word">& <span class="gradient-cyan">Cultural</span></span>
+        <span class="word">Impact</span>
+      </div>
+    </div>
+
+    <div class="hero-pills-container">
+      <div class="hero-pill">Since 2016</div>
+      <div class="hero-pill cyan">Award-Winning</div>
+    </div>
+
+    <p class="hero-subtitle">We transform African brands into cultural movements through strategic storytelling and creative excellence.</p>
   </div>
 </section>
 
-<!-- OUR STORY -->
-<section class="story-section section">
-  <div class="container">
-    <div class="story-grid">
-      <div class="story-content">
-        <h2>Born from <span class="text-orange">Passion</span>, Built on <span class="text-cyan">Strategy</span></h2>
-        <p class="story-text">
-          Savvy Media Africa isn't just an agency. We're <strong>architects of cultural moments</strong>, emerging from the powerful belief that African brands deserve world-class creative excellence without compromise.
-        </p>
-        <p class="story-text">
-          From <strong>MTN's groundbreaking Y'ello Couch</strong> to <strong>Filmhouse's entertainment dominance</strong> and <strong>MTN See Naija's cultural impact</strong>, we've proven that authentic African creativity breaks through global noise.
-        </p>
-        <p class="story-text">
-          <strong>Our mantra is simple:</strong> Create work that moves culture. Measure its impact. Repeat. Every campaign, every strategy, every pixel is guided by one unwavering principle—making work that doesn't just exist, but transforms.
-        </p>
+<!-- ========== ABOUT STORY ========== -->
+<section class="about-story section">
+  <div class="story-container">
+    <div class="story-content">
+      <h2>Our <span class="orange">Origin</span> Story</h2>
+      
+      <p class="story-text">
+        Savvy Media Africa was founded with a bold vision: to create world-class creative work rooted in African culture and values. We started as a small, passionate team determined to shift narratives and elevate African brands on the global stage.
+      </p>
+      
+      <p class="story-text">
+        Over the years, we've grown into an award-winning agency trusted by Africa's most influential brands. But our core mission remains unchanged—we don't just create content; we create <span class="underline-text">movements</span>.
+      </p>
+
+      <div class="story-highlights">
+        <div class="highlight-card">
+          <div class="highlight-number">9+</div>
+          <div class="highlight-label">Years of Excellence</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-number">50+</div>
+          <div class="highlight-label">Award-Winning Campaigns</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-number">100+</div>
+          <div class="highlight-label">African Brands Served</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-number">15+</div>
+          <div class="highlight-label">Team Members Globally</div>
+        </div>
       </div>
-      <div class="story-image">
-        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=900&auto=format&fit=crop" alt="Our Story">
-      </div>
+    </div>
+
+    <div class="story-image">
+      <img src="https://demoo.savvymediaafrica.com/wp-content/uploads/2024/06/Tofunmi-Akinseye-1.png" alt="Savvy Media Africa Headquarters">
+      <div class="story-badge">Certified Excellence ✓</div>
     </div>
   </div>
 </section>
 
-<!-- WHAT WE DO -->
-<section class="whatwedo-section section">
-  <div class="container">
-    <h2>What We <span class="text-green">Do</span></h2>
-    <p class="whatwedo-subtitle">From strategy to execution, we deliver integrated solutions that drive real results</p>
-    
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
-        <h3 class="service-title">Creative Storytelling</h3>
-        <p class="service-description">Craft compelling narratives that capture hearts, move culture, and transform brands into household names across Africa.</p>
-      </div>
+<!-- ========== MISSION & VALUES ========== -->
+<section class="mission-section section">
+  <div class="mission-grid">
+    <div class="mission-card">
+      <h3>Our <span class="cyan">Mission</span></h3>
+      <p>
+        To create transformative, culture-shifting work that elevates African brands and storytellers. We believe in the power of strategic creativity to move markets, change minds, and inspire generations. Every project is an opportunity to prove that African creativity is world-class.
+      </p>
+    </div>
 
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-        <h3 class="service-title">Strategic Planning</h3>
-        <p class="service-description">Data-driven strategies that blend cultural insights with commercial objectives. Every decision backed by deep research.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
-        <h3 class="service-title">Campaign Execution</h3>
-        <p class="service-description">From concept to reality. We produce, distribute, amplify. Every touchpoint optimized for maximum impact.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-users"></i></div>
-        <h3 class="service-title">Media & Digital</h3>
-        <p class="service-description">Omnichannel campaigns that reach audiences where they are. Strategic media placement ensuring engagement.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-trophy"></i></div>
-        <h3 class="service-title">Brand Consulting</h3>
-        <p class="service-description">Define your brand voice. Refine your narrative. Develop strategies that create lasting competitive advantage.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-handshake"></i></div>
-        <h3 class="service-title">Long-term Partnerships</h3>
-        <p class="service-description">Ongoing creative and strategic support. We grow with your brand, ensuring sustained cultural relevance.</p>
-      </div>
+    <div class="mission-card">
+      <h3>Our <span class="orange">Vision</span></h3>
+      <p>
+        To be the most celebrated creative and media agency in Africa—recognized globally for bold ideas, flawless execution, and authentic storytelling. We envision a world where African narratives shape global culture, and where African talent is sought after and celebrated worldwide.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- OUR VISION -->
-<section class="vision-section section">
-  <div class="container">
-    <h2>Our <span class="text-cyan">Vision</span></h2>
-    <p class="vision-text">
-      To preserve the legacies of Africa's most influential brands through visual storytelling that transcends time and platforms—creating timeless moments that shape culture.
-    </p>
-    <div class="vision-image">
-      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=900&auto=format&fit=crop" alt="Our Vision">
-    </div>
-  </div>
-</section>
-
-<!-- VALUES -->
+<!-- ========== VALUES ========== -->
 <section class="values-section section">
-  <div class="container">
-    <h2>Our Core <span class="text-orange">Values</span></h2>
-    <p class="values-subtitle">The principles that drive everything we create</p>
-    
+  <div class="dna-container">
+    <div style="text-align:center;margin-bottom:2rem">
+      <span class="section-label">Our Values</span>
+      <h2 class="section-title title-animate"><span class="tword">What</span> <span class="tword">We</span> <span class="tword">Stand</span> <span class="tword">For</span></h2>
+      <p class="section-subtitle">The principles that guide every decision we make</p>
+    </div>
+
     <div class="values-grid">
       <div class="value-card">
-        <span class="value-icon">🔥</span>
-        <h3 class="value-title">Creative Courage</h3>
-        <p class="value-description">We don't follow trends—we create them. Bold ideas. Fearless execution. Audacious vision.</p>
+        <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+        <h4>Bold Creativity</h4>
+        <p>We don't play it safe. We create work that challenges conventions, breaks barriers, and makes people sit up and pay attention.</p>
       </div>
 
       <div class="value-card">
-        <span class="value-icon">📊</span>
-        <h3 class="value-title">Results Obsession</h3>
-        <p class="value-description">We measure everything. Impact, engagement, sentiment, growth. Our work lives by real results.</p>
+        <div class="value-icon"><i class="fas fa-chart-line"></i></div>
+        <h4>Results Matter</h4>
+        <p>Great ideas mean nothing without impact. We measure everything, optimize continuously, and deliver real business results.</p>
       </div>
 
       <div class="value-card">
-        <span class="value-icon">🌍</span>
-        <h3 class="value-title">Cultural Authenticity</h3>
-        <p class="value-description">Africa isn't a market to us—it's home. We create from genuine understanding of our culture and stories.</p>
+        <div class="value-icon"><i class="fas fa-users"></i></div>
+        <h4>Cultural Authenticity</h4>
+        <p>We're rooted in African culture and values. Every story we tell is authentic, resonant, and deeply connected to our communities.</p>
       </div>
 
       <div class="value-card">
-        <span class="value-icon">👥</span>
-        <h3 class="value-title">Team Excellence</h3>
-        <p class="value-description">Our talent is our competitive advantage. We invest in people and cultivate creativity daily.</p>
+        <div class="value-icon"><i class="fas fa-cog"></i></div>
+        <h4>Excellence Daily</h4>
+        <p>We sweat the details. From strategy to pixels, every element is crafted with precision and care to achieve perfection.</p>
       </div>
 
       <div class="value-card">
-        <span class="value-icon">🎯</span>
-        <h3 class="value-title">Strategic Precision</h3>
-        <p class="value-description">Beauty meets brains. Stunning creative powered by data. Every campaign brilliant AND commercially smart.</p>
+        <div class="value-icon"><i class="fas fa-handshake"></i></div>
+        <h4>Genuine Partnership</h4>
+        <p>Your success is our success. We're invested in your growth, available when you need us, and committed to long-term partnerships.</p>
       </div>
 
       <div class="value-card">
-        <span class="value-icon">🤝</span>
-        <h3 class="value-title">Partnership First</h3>
-        <p class="value-description">We're partners in your evolution. Your success is our obsession. We win when you win, period.</p>
+        <div class="value-icon"><i class="fas fa-globe"></i></div>
+        <h4>Global Perspective</h4>
+        <p>We think globally, act locally. We bring world-class standards and international best practices to every African project.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- LEADERSHIP -->
-<section class="leadership-section section">
-  <div class="container">
-    <h2>The <span class="text-cyan">Team</span> Behind The Movement</h2>
-    
-    <div class="leadership-grid">
-      <div class="leader-card">
-        <img src="https://demoo.savvymediaafrica.com/wp-content/uploads/2024/06/Tofunmi-Akinseye-1.png" alt="CEO" class="leader-image">
-        <div class="leader-info">
-          <h3 class="leader-name">Tofunmi Akinseye</h3>
-          <p class="leader-role">Founder & Chief Storyteller</p>
-          <p class="leader-bio">
-            With 12+ years of African media expertise, Tofunmi drives every campaign with cultural insight and strategic precision. Her vision has shaped some of Africa's most memorable brand moments.
-          </p>
-          <p class="leader-quote">"Every brand has a story. Our job is to tell it in a way that moves culture."</p>
+<!-- ========== TEAM ========== -->
+<section class="team-section section">
+  <div class="team-container">
+    <div style="text-align:center;margin-bottom:2rem">
+      <span class="section-label">Our Team</span>
+      <h2 class="section-title title-animate"><span class="tword">Meet</span> <span class="tword">the</span> <span class="tword">Savvy</span> <span class="tword">Creatives</span></h2>
+      <p class="section-subtitle">Talented storytellers, strategists, and creators from across Africa</p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-member">
+        <div class="team-image">
+          <img src="https://demoo.savvymediaafrica.com/wp-content/uploads/2024/06/Tofunmi-Akinseye-1.png" alt="Tofunmi Akinseye">
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Tofunmi Akinseye</h3>
+          <div class="team-role">CEO & Chief Storyteller</div>
+          <p class="team-bio">With over a decade in brand strategy and creative leadership, Tofunmi drives Savvy's vision of transforming African narratives.</p>
+          <div class="team-socials">
+            <a href="#" class="team-social"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="team-social"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="team-social"><i class="fab fa-instagram"></i></a>
+          </div>
         </div>
       </div>
 
-      <div class="leader-card">
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=500&auto=format&fit=crop" alt="Creative Team" class="leader-image">
-        <div class="leader-info">
-          <h3 class="leader-name">Creative Excellence Team</h3>
-          <p class="leader-role">Design & Production</p>
-          <p class="leader-bio">
-            Award-winning creatives crafting culturally magnetic campaigns that capture hearts and drive results. Our team brings decades of combined experience in storytelling.
-          </p>
-          <p class="leader-quote">"Creativity without culture is just noise. We make music."</p>
+      <div class="team-member">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop" alt="Creative Director">
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Ayo Odunsanya</h3>
+          <div class="team-role">Creative Director</div>
+          <p class="team-bio">Award-winning creative with a passion for bold ideas that challenge norms and captivate audiences across Africa.</p>
+          <div class="team-socials">
+            <a href="#" class="team-social"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="team-social"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="team-social"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-member">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" alt="Strategy Lead">
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Chioma Umeji</h3>
+          <div class="team-role">Strategy & Growth Lead</div>
+          <p class="team-bio">Data-driven strategist who translates market insights into campaigns that deliver measurable business impact.</p>
+          <div class="team-socials">
+            <a href="#" class="team-social"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="team-social"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="team-social"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-member">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1000&auto=format&fit=crop" alt="Content Producer">
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Ifeanyi Okafor</h3>
+          <div class="team-role">Content Producer</div>
+          <p class="team-bio">Visionary filmmaker and producer bringing African stories to life with cinematic excellence and authentic voice.</p>
+          <div class="team-socials">
+            <a href="#" class="team-social"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="team-social"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="team-social"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-member">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop" alt="Social Media Lead">
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Zainab Ahmed</h3>
+          <div class="team-role">Social Media & Community Manager</div>
+          <p class="team-bio">Community builder who creates engaging digital experiences and turns audiences into loyal brand advocates.</p>
+          <div class="team-socials">
+            <a href="#" class="team-social"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="team-social"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="team-social"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-member">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop" alt="PR Manager">
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Chukwu Ekene</h3>
+          <div class="team-role">PR & Reputation Manager</div>
+          <p class="team-bio">Media relations expert skilled at crafting compelling narratives and managing brand reputation across multiple platforms.</p>
+          <div class="team-socials">
+            <a href="#" class="team-social"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="team-social"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="team-social"><i class="fab fa-instagram"></i></a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<section class="stats-section section">
-  <div class="container">
-    <h2>The Impact We've Created</h2>
-    
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-number">500M+</div>
-        <div class="stat-label">Total Impressions</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-number">85%</div>
-        <div class="stat-label">Client Retention</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-number">60+</div>
-        <div class="stat-label">Creative Professionals</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-number">30+</div>
-        <div class="stat-label">Awards & Recognition</div>
-      </div>
-    </div>
-  </div>
+<!-- ========== CTA ========== -->
+<section class="about-cta section" id="contact">
+  <h2 class="cta-title">Ready to Work With <span class="underline-text" style="color:var(--deep-navy)">Us</span>?</h2>
+  <p class="cta-subtitle">Let's create something extraordinary for your brand.</p>
+  <a href="mailto:hello@savvymediaafrica.com" class="btn-primary" style="opacity:1">Get In Touch <i class="fas fa-paper-plane"></i></a>
 </section>
 
-<!-- CTA -->
-<section class="cta-section section">
-  <div class="container">
-    <h2>
-      Ready to Transform Your <span class="text-green">Brand?</span>
-    </h2>
-    <p class="cta-text">
-      Let's create magic together. Your vision. Our expertise. African creativity at its finest.
-    </p>
-    <a href="mailto:hello@savvymediaafrica.com" class="cta-btn">Get Started <i class="fas fa-arrow-right"></i></a>
-  </div>
-</section>
-
-<!-- FOOTER -->
+<!-- ========== FOOTER ========== -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
       <h3>SAVVY MEDIA</h3>
       <p>Africa's leading creative and media agency. Where creativity lives, results matter.</p>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+      </div>
     </div>
-
     <div class="footer-column">
       <h4>Services</h4>
       <ul class="footer-links">
@@ -946,17 +1398,15 @@ footer {
         <li><a href="#">Consulting</a></li>
       </ul>
     </div>
-
     <div class="footer-column">
       <h4>Company</h4>
       <ul class="footer-links">
-        <li><a href="/about">About Us</a></li>
-        <li><a href="#work">Our Work</a></li>
+        <li><a href="about.php">About Us</a></li>
+        <li><a href="#">Our Work</a></li>
         <li><a href="#">Insights</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
-
     <div class="footer-column">
       <h4>Contact</h4>
       <ul class="footer-links">
@@ -966,163 +1416,306 @@ footer {
       </ul>
     </div>
   </div>
-
-  <div class="footer-bottom">
-    <p>&copy; 2025 Savvy Media Africa. All rights reserved.</p>
-  </div>
+  <div class="footer-bottom"><p>&copy; 2025 Savvy Media Africa. All rights reserved.</p></div>
 </footer>
 
+<!-- ========== SCROLL-TO-TOP ========== -->
+<button class="scroll-top" id="scrollTopBtn" aria-label="Back to top">
+  <div class="inner"><span class="pct" id="scrollPct">0%</span></div>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-// Custom Cursor
-const cursor = document.querySelector('.cursor');
-const cursorFollower = document.querySelector('.cursor-follower');
-
-document.addEventListener('mousemove', (e) => {
-  cursor.style.left = (e.clientX - 4) + 'px';
-  cursor.style.top = (e.clientY - 4) + 'px';
+  // Custom Cursor
+  const cursor = document.querySelector('.cursor');
+  const cursorFollower = document.querySelector('.cursor-follower');
+  let isOnInteractive = false;
   
-  setTimeout(() => {
-    cursorFollower.style.left = (e.clientX - 16) + 'px';
-    cursorFollower.style.top = (e.clientY - 16) + 'px';
-  }, 60);
-});
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = (e.clientX - 4) + 'px';
+    cursor.style.top = (e.clientY - 4) + 'px';
+    
+    setTimeout(() => {
+      cursorFollower.style.left = (e.clientX - 16) + 'px';
+      cursorFollower.style.top = (e.clientY - 16) + 'px';
+    }, 60);
+  });
 
-document.addEventListener('mouseover', (e) => {
-  const interactive = e.target.closest('a, button, .service-card, .value-card, .leader-card, .stat-card');
-  if (interactive) {
-    cursor.style.transform = 'scale(1.6)';
-    cursor.style.opacity = '1';
-    cursorFollower.style.transform = 'scale(2.2)';
-    cursorFollower.style.borderColor = 'var(--bright-cyan)';
-    cursorFollower.style.boxShadow = '0 0 16px var(--bright-cyan), inset 0 0 12px rgba(0,212,255,.4)';
-  }
-});
-
-document.addEventListener('mouseout', (e) => {
-  const interactive = e.target.closest('a, button, .service-card, .value-card, .leader-card, .stat-card');
-  if (interactive) {
-    cursor.style.transform = 'scale(1)';
-    cursor.style.opacity = '0.8';
-    cursorFollower.style.transform = 'scale(1)';
-    cursorFollower.style.borderColor = 'var(--bright-cyan)';
-    cursorFollower.style.boxShadow = 'inset 0 0 8px rgba(0,212,255,.3)';
-  }
-});
-
-// Nav scroll
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  window.scrollY > 50 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled');
-});
-
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href'));
-    if (t) {
-      e.preventDefault();
-      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  document.addEventListener('mouseover', (e) => {
+    const interactive = e.target.closest('a, button, [role="button"], .value-card, .team-member, input, textarea');
+    if (interactive) {
+      isOnInteractive = true;
+      cursor.style.transform = 'scale(1.6)';
+      cursor.style.opacity = '1';
+      cursorFollower.style.transform = 'scale(2.2)';
+      cursorFollower.style.borderColor = 'var(--bright-cyan)';
+      cursorFollower.style.boxShadow = '0 0 16px var(--bright-cyan), inset 0 0 12px rgba(0,212,255,.4)';
     }
   });
-});
 
-// GSAP Animations
-gsap.registerPlugin(ScrollTrigger);
-
-// Story section
-gsap.from('.story-content h2', {
-  scrollTrigger: { trigger: '.story-section', start: 'top 75%' },
-  x: -80,
-  opacity: 0,
-  duration: 1,
-  ease: 'power3.out'
-});
-
-gsap.from('.story-text', {
-  scrollTrigger: { trigger: '.story-section', start: 'top 75%' },
-  x: -60,
-  opacity: 0,
-  duration: 1,
-  stagger: 0.2,
-  delay: 0.3,
-  ease: 'power3.out'
-});
-
-gsap.from('.story-image', {
-  scrollTrigger: { trigger: '.story-section', start: 'top 75%' },
-  x: 80,
-  opacity: 0,
-  duration: 1.2,
-  delay: 0.4,
-  ease: 'power3.out'
-});
-
-// Services
-gsap.from('.service-card', {
-  scrollTrigger: { trigger: '.whatwedo-section', start: 'top 75%' },
-  y: 80,
-  opacity: 0,
-  duration: 0.8,
-  stagger: 0.15,
-  ease: 'power3.out'
-});
-
-// Vision
-gsap.from('.vision-text', {
-  scrollTrigger: { trigger: '.vision-section', start: 'top 75%' },
-  y: 40,
-  opacity: 0,
-  duration: 0.9,
-  ease: 'power3.out'
-});
-
-gsap.from('.vision-image', {
-  scrollTrigger: { trigger: '.vision-section', start: 'top 75%' },
-  scale: 0.9,
-  opacity: 0,
-  duration: 1,
-  delay: 0.3,
-  ease: 'power3.out'
-});
-
-// Values
-gsap.from('.value-card', {
-  scrollTrigger: { trigger: '.values-section', start: 'top 75%' },
-  y: 70,
-  opacity: 0,
-  duration: 0.8,
-  stagger: 0.12,
-  ease: 'power3.out'
-});
-
-// Leadership
-gsap.from('.leader-card', {
-  scrollTrigger: { trigger: '.leadership-section', start: 'top 75%' },
-  scale: 0.85,
-  opacity: 0,
-  duration: 1,
-  stagger: 0.3,
-  ease: 'back.out(1.7)'
-});
-
-// Stats
-gsap.from('.stat-card', {
-  scrollTrigger: { trigger: '.stats-section', start: 'top 75%' },
-  scale: 0.5,
-  opacity: 0,
-  duration: 0.8,
-  stagger: 0.1,
-  ease: 'back.out(1.7)'
-});
-
-// Service card mouse glow
-document.querySelectorAll('.service-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const r = card.getBoundingClientRect();
-    card.style.setProperty('--x', (e.clientX - r.left) + 'px');
-    card.style.setProperty('--y', (e.clientY - r.top) + 'px');
+  document.addEventListener('mouseout', (e) => {
+    const interactive = e.target.closest('a, button, [role="button"], .value-card, .team-member, input, textarea');
+    if (interactive) {
+      isOnInteractive = false;
+      cursor.style.transform = 'scale(1)';
+      cursor.style.opacity = '0.8';
+      cursorFollower.style.transform = 'scale(1)';
+      cursorFollower.style.borderColor = 'var(--bright-cyan)';
+      cursorFollower.style.boxShadow = 'inset 0 0 8px rgba(0,212,255,.3)';
+    }
   });
-});
+
+  // NAV scroll behavior
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll',()=>{
+    window.scrollY>100?nav.classList.add('scrolled'):nav.classList.remove('scrolled')
+  });
+
+  // Mobile Menu Toggle
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+  const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+
+  function closeMobileMenu(){
+    mobileMenu.classList.remove('open');
+    mobileMenuOverlay.classList.remove('open');
+    document.body.style.overflow = 'auto';
+  }
+
+  function openMobileMenu(){
+    mobileMenu.classList.add('open');
+    mobileMenuOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  mobileMenuBtn.addEventListener('click', ()=>{
+    mobileMenu.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
+  });
+
+  mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+
+  // Search Modal Toggle
+  const navSearch = document.querySelector('.nav-search');
+  const searchOverlay = document.getElementById('searchOverlay');
+  const searchModal = document.getElementById('searchModal');
+  const searchClose = document.getElementById('searchClose');
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+
+  const searchIndex = [
+    { title: 'About Us', text: 'Savvy Media Africa founding story and mission', url: '#' },
+    { title: 'Our Mission', text: 'Transform African brands into cultural movements', url: '#' },
+    { title: 'Our Team', text: 'Award-winning creatives and strategists', url: '#' },
+    { title: 'Values', text: 'Bold creativity results and authenticity', url: '#' },
+    { title: 'Contact', text: 'Get in touch with Savvy Media', url: '#contact' },
+  ];
+
+  function performSearch(query){
+    if(!query.trim()){
+      searchResults.innerHTML = '';
+      return;
+    }
+
+    const q = query.toLowerCase();
+    const results = searchIndex.filter(item => 
+      item.title.toLowerCase().includes(q) || 
+      item.text.toLowerCase().includes(q)
+    );
+
+    if(results.length === 0){
+      searchResults.innerHTML = '<p style="color:rgba(255,255,255,.6);margin-top:2rem">No results found</p>';
+      return;
+    }
+
+    searchResults.innerHTML = results.map(item => `
+      <a href="${item.url}" class="search-result-item" onclick="document.getElementById('searchOverlay').click()">
+        <h3 style="color:var(--bright-cyan);margin-bottom:.5rem">${item.title}</h3>
+        <p style="color:rgba(255,255,255,.7);font-size:.95rem">${item.text}</p>
+      </a>
+    `).join('');
+  }
+
+  function openSearch(){
+    searchOverlay.classList.add('open');
+    searchModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => searchInput.focus(), 300);
+  }
+
+  function closeSearch(){
+    searchOverlay.classList.remove('open');
+    searchModal.classList.remove('open');
+    document.body.style.overflow = 'auto';
+    searchInput.value = '';
+    searchResults.innerHTML = '';
+  }
+
+  navSearch.addEventListener('click', openSearch);
+  searchClose.addEventListener('click', closeSearch);
+  searchOverlay.addEventListener('click', closeSearch);
+
+  searchInput.addEventListener('input', (e) => {
+    performSearch(e.target.value);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && searchModal.classList.contains('open')){
+      closeSearch();
+    }
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+    });
+  });
+
+  // Animations
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to('.hero-title .word, .hero-title .comma',{
+    y:0,
+    scale:1,
+    rotation:0,
+    opacity:1,
+    duration:1,
+    stagger:0.06,
+    ease:'power4.out',
+    delay:.05
+  });
+
+  gsap.to('.hero-pill',{
+    opacity:1,
+    scale:1,
+    duration:.7,
+    stagger:.1,
+    delay:.6,
+    ease:'back.out(1.7)'
+  });
+
+  gsap.to('.hero-subtitle',{opacity:1,duration:.8,delay:.8});
+
+  gsap.utils.toArray('[data-parallax]').forEach(el=>{
+    const amt = +el.getAttribute('data-parallax') || 10;
+    gsap.to(el,{
+      y:amt,
+      scrollTrigger:{
+        trigger:'.hero',
+        start:'top top',
+        end:'bottom top',
+        scrub:1
+      }
+    });
+  });
+
+  gsap.to('.story-image',{
+    scrollTrigger:{trigger:'.about-story',start:'top 75%'},
+    opacity:1,
+    scale:1,
+    duration:.8,
+    ease:'back.out(1.7)'
+  });
+
+  gsap.to('.story-content h2',{
+    scrollTrigger:{trigger:'.about-story',start:'top 75%'},
+    opacity:1,
+    y:0,
+    duration:.8,
+    ease:'power3.out'
+  });
+
+  gsap.to('.highlight-card',{
+    scrollTrigger:{trigger:'.story-highlights',start:'top 85%'},
+    opacity:1,
+    y:0,
+    duration:.6,
+    stagger:.1,
+    ease:'back.out(1.5)'
+  });
+
+  document.querySelectorAll('.title-animate').forEach(title=>{
+    gsap.to(title.querySelectorAll('.tword'),{
+      scrollTrigger:{trigger:title,start:'top 82%'},
+      y:0,
+      opacity:1,
+      duration:.55,
+      stagger:.07,
+      ease:'power3.out'
+    });
+  });
+
+  gsap.utils.toArray('.mission-card').forEach((card,i)=>{
+    gsap.to(card,{
+      scrollTrigger:{trigger:card,start:'top 85%'},
+      y:0,
+      opacity:1,
+      duration:.65,
+      delay:i*0.2
+    });
+  });
+
+  gsap.utils.toArray('.value-card').forEach((card,i)=>{
+    gsap.to(card,{
+      scrollTrigger:{trigger:card,start:'top 90%'},
+      y:0,
+      opacity:1,
+      duration:.6,
+      delay:i*0.04
+    });
+
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      card.style.setProperty('--x', (e.clientX-r.left)+'px');
+      card.style.setProperty('--y', (e.clientY-r.top)+'px');
+    });
+  });
+
+  gsap.utils.toArray('.team-member').forEach((member,i)=>{
+    gsap.to(member,{
+      scrollTrigger:{trigger:member,start:'top 90%'},
+      y:0,
+      opacity:1,
+      duration:.65,
+      delay:i*0.08
+    });
+  });
+
+  // Scroll-to-top
+  const scrollBtn=document.getElementById('scrollTopBtn');
+  const scrollPct=document.getElementById('scrollPct');
+  let scrollTimeout;
+
+  function setScrollProgress(){
+    const st=window.scrollY;
+    const h=document.documentElement.scrollHeight - innerHeight;
+    const p=h>0?Math.round((st/h)*100):0;
+    document.documentElement.style.setProperty('--scroll',p);
+    scrollBtn.style.setProperty('--scroll',p);
+    scrollPct.textContent=p+'%';
+    
+    if(st>380){
+      scrollBtn.classList.add('visible');
+      scrollBtn.classList.add('scrolling');
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(()=>{
+        scrollBtn.classList.remove('scrolling');
+      }, 500);
+    } else {
+      scrollBtn.classList.remove('visible','scrolling');
+      clearTimeout(scrollTimeout);
+    }
+  }
+
+  setScrollProgress();
+  window.addEventListener('scroll',setScrollProgress,{passive:true});
+  scrollBtn.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 </script>
 
 </body>
